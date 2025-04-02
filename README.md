@@ -5,6 +5,7 @@ This is a auto push repository for Baekjoon Online Judge created with [BaekjoonH
 
 ### 커밋 컨벤션
 ```shell
+review: 복습
 array:  - 배열 문제
 string:  - 문자열 문제
 sort:  - 정렬 알고리즘
