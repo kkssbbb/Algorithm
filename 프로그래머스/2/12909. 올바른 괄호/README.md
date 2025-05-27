@@ -1,6 +1,6 @@
 # [level 2] 올바른 괄호 - 12909 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12909?gad_source=1&gad_campaignid=22499034228&gbraid=0AAAAAC_c4nCJ0ExxeI-y3VxUCjHr32H7g&gclid=Cj0KCQjwotDBBhCQARIsAG5pinPJYWV_4Q8OrxVTQiYw94_PjLV9SntjLTPv5yqGXwZwtg88nhUA1pgaAuAREALw_wcB) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12909?gad_source=1&gad_campaignid=22499034228&gbraid=0AAAAAC_c4nB7Ef1xJG_naK7X6BXiRnX3F&gclid=Cj0KCQjwotDBBhCQARIsAG5pinMC4BsuH3pJKi7KAM8-Eqe9aYHTBkdXqNCUCemtZVgDoyoXCYA3PG4aAkOwEALw_wcB) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 05월 27일 10:52:12
+2025년 05월 27일 10:52:47
 
 ### 문제 설명
 
