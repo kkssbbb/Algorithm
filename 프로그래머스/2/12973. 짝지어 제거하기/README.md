@@ -1,10 +1,10 @@
 # [level 2] 짝지어 제거하기 - 12973 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12973?gad_source=1&gad_campaignid=22499034228&gbraid=0AAAAAC_c4nCOudYJ5grkYIch4SZ1Y1NJE&gclid=CjwKCAjw6NrBBhB6EiwAvnT_rv1dJfozgsh6g6GBL9BGfcr1jjy8j9EAg58gJxrqeBVEd_wLVUr38BoCrykQAvD_BwE) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12973?gad_source=1&gad_campaignid=22499034228&gbraid=0AAAAAC_c4nCxMnOlkPxzWQvW_m-bRnmPe&gclid=CjwKCAjw6NrBBhB6EiwAvnT_rrEKQVj58wV31eEICUOFinMNbTQd8D9289n3mwHvlFTq8SRip6mfhxoCMEEQAvD_BwE) 
 
 ### 성능 요약
 
-메모리: 65.7 MB, 시간: 69.07 ms
+메모리: 65.8 MB, 시간: 67.02 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 05월 28일 16:45:34
+2025년 05월 29일 09:46:54
 
 ### 문제 설명
 

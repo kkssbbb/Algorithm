@@ -1,17 +1,16 @@
 import java.util.Stack;
-class Solution
-{
-    public static int solution(String s)
-    {
-        //s 길이만큼 반복
+class Solution {
+
+    public static int solution(String s){
         Stack<Character> stack = new Stack<>();
-        for(char c :  s.toCharArray()){
-            //스택에최근 요소랑 c랑비교 같으면 스택 pop
-            if(!stack.isEmpty() && stack.peek() == c){
+        for(char c : s.toCharArray()){
+            if(!stack.isEmpty() && c == stack.peek()){ //스택이 비어있지않고, c랑 stack.pop 이랑 같으면 버림
                 stack.pop();
-            }else stack.push(c);
-            //else 스택이 비어있으면 푸시
+            }else{ // 아니면 스택에 푸시
+                stack.push(c);
+            }
         }
+
         return stack.isEmpty() ? 1 : 0;
     }
 }
