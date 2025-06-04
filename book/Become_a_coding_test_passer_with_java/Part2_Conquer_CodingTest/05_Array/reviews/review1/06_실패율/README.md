@@ -1,0 +1,1 @@
+문제 : [실패율](https://school.programmers.co.kr/learn/courses/30/lessons/42889?gad_source=1&gad_campaignid=22499034228&gbraid=0AAAAAC_c4nDGBnrmFtiogD9oMVPGz2tWl&gclid=CjwKCAjw87XBBhBIEiwAxP3_A2PJqtP9A36284EQe32E3ZYMYJ6dsqlFevGSE3DbcexcxiXbElpKUhoCgFQQAvD_BwE)
