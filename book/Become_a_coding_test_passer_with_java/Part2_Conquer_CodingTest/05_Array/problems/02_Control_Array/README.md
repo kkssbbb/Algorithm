@@ -1,4 +1,35 @@
-#### TreeSet
+###  toArray()가 int[]와 Integer[]에 대해 다르게 동작하는 이유
+
+스트림에서 주요 스트림 두 가지가 있다.  
+1. 기본형 스트림
+    - IntStrema: int 같이 기본형을 다루는 기본형 스트림들. 
+2. 참조형 스트림
+    - Stream<T>: String, Integer 등 객체(침조형)를 다루는 스트림
+
+위 코드 toArray() 가 다르게 동작하는 이유는 기본형 또는 참조형 스트림에 따라서 toArray()가 다르게 동작하기 대문이다.
+
+#### toArray() 동작 차이
+```java   
+   Integer[] result = Arrays.stream(arr).boxed().distinct().toArray(Integer[]::new);
+   /*    
+   boxed().distinct() 로 기본형 배열이 Integer[]로 박싱되어 반환되는 타입은 참조형
+   스트림의 Stream<T> 이다. 
+   Stream<T> 의 toArrau()는 Object[] 를 반환하기때문에  toArray(Integer[]::new) 처럼
+   원하는 타입의 생성자를 명시 해주어야 한다.
+   */
+   int [] answer = Arrays.stream(result).mapToInt(Integer::intValue).toArray();   
+   /*
+   mapToInt(Integer::intValue)로 기본형스트림인 IntStrem이 반환 되어 IntStream()의
+   toArray()는 반환타입이 int[]로 고정 되어 있다.
+   */
+```
+
+</br>
+</br>
+
+--- 
+
+### TreeSet
 - TreeSet은 자바 컬렉션 프레임워크의 Set 인터페이스를 구현한 클래스 중 하나로, 중복을 허용하지 않으며 자동으로 정렬되는 집합 자료구조
 - 데이터가 추가될 때마다 자동으로 정렬되며, 기본적으로 오름차순(자연 순서) 정렬이 적용
 
