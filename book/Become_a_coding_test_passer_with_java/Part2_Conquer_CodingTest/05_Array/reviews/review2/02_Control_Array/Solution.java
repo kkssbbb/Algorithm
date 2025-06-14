@@ -4,23 +4,14 @@ import java.util.TreeSet;
 class Solution{
     //내림차 중복제거
     public static int[] solution(int[] arr){
-        Integer[] result =  Arrays.stream(arr).boxed().distinct().toArray(Integer[]::new);
-        Arrays.sort(result, Collections.reverseOrder());        
-        int[] answer = Arrays.stream(result).mapToInt(Integer::intValue).toArray();
-        return answer;
-    }
+         Integer[] result = Arrays.stream(arr).boxed().distinct().toArray(Integer[]::new);
+         Arrays.sort(result, Collections.reverseOrder());
+         int[] answer = Arrays.stream(result).mapToInt(Integer::intValue).toArray();
+         return answer;
+        }
 
     public static int[] solution2(int[] arr){
-        
-        TreeSet<Integer> set = new TreeSet<>(Collections.reverseOrder());
-        for(int n : arr){
-            set.add(n);
-        }
-
-        int[] answer = new int[set.size()];
-        for(int i=0; i<arr.length; i++){
-            answer[i] = set.pollFirst();
-        }
+        int[] answer = new int[]{};
         return answer;
     }
 
