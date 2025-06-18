@@ -1,6 +1,7 @@
 import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 class Solution{
     public  static int[] solution(int[] progresses, int[] speeds) {
         /* 
@@ -40,6 +41,38 @@ class Solution{
         return answer;
     }
 
+    public  static int[] solution2(int[] progresses, int[] speeds) {
+        //책 풀이
+        /* 
+         * 1. 각 작업의 배포 가능일을 구한다.
+         * 2. 작업을 진행하며 배포 가능일이 첫 번째 작업일보다 빠른 작업들은 함께 배포한다.
+         * 3. 첫 번째 작업의 배포 가능일보다 늦은 작업이 나오면, 2단계와 유사하게 해당 작업의 배포일을 기준으로 뒤의 작업들을 배포한다. 이를 모든 작업이 완료될 때까지 반복한다.
+         */
+
+         Queue<Integer> answer = new ArrayDeque<>();
+        int n = progresses.length;
+        //각 작업의 배포 가능일 계산
+        int[] daysLeft = new int[n];
+        for(int i=0; i<n; i++){
+            daysLeft[i] = (int) Math.ceil((100.0 - progresses[i]) /speeds[i]);
+        }
+
+        int count = 0; // 배포될 작업 수 카운트
+        int maxDay = daysLeft[0]; //현재 배포될 작업 중 가장 늦게 배포될 작업의 가능일
+
+        for(int i=0; i<n; i++){
+            if(daysLeft[i] <= maxDay){ //배포 가능일이 가장 늦은 배포일보다 빠르면
+                count++;
+            }else{ //배포 예정일이 기준 배포일보다 느리면
+            answer.add(count);
+            count=1;
+            maxDay=daysLeft[i];
+        }
+        }
+        answer.add(count); //마지막으로 카운트된 작업들을 함계 배포
+        return answer.stream().mapToInt(Integer::intValue).toArray();
+    }
+
     public static void printQueue(Queue<Integer> queue){
         for(int i : queue){
             System.out.println(i);
@@ -69,6 +102,8 @@ class Solution{
         int[] speeds = {1, 1, 1, 1, 1, 1}; //5 10 1 1 20 1
 
         int[] answer = solution(progresses,speeds);
-        System.out.println(answer); // [2,1]
+        int[] answer2 = solution2(progresses,speeds);
+        System.out.println(Arrays.toString(answer)); // [2,1]
+        System.out.println(Arrays.toString(answer2)); // [2,1]
     }
 }
