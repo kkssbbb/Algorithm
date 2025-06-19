@@ -68,10 +68,10 @@ class Solution{
             if(daysLeft[i] <= maxDay){ //배포 가능일이 가장 늦은 배포일보다 빠르면
                 count++;
             }else{ //배포 예정일이 기준 배포일보다 느리면
-            answer.add(count);
-            count=1;
-            maxDay=daysLeft[i];
-        }
+                answer.add(count);
+                count=1;
+                maxDay=daysLeft[i];
+            }
         }
         answer.add(count); //마지막으로 카운트된 작업들을 함계 배포
         return answer.stream().mapToInt(Integer::intValue).toArray();
