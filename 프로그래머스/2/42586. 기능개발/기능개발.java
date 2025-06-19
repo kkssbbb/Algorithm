@@ -1,58 +1,47 @@
 import java.util.Queue;
 import java.util.ArrayDeque;
-import java.util.LinkedList;
-class Solution {
- public  static int[] solution(int[] progresses, int[] speeds) {
+import java.util.Arrays;
+class Solution{
+    public  static int[] solution(int[] progresses, int[] speeds) {
         /* 
-         progresses = [95, 90, 99, 99, 80, 99]  , speeds = [1, 1, 1, 1, 1, 1]
-         * [의사코드]
-         * progresses[]의 배포완료기간을 구한다.:complet - progresses[0] 이 speeds[0]을 누적하면서 100과 같아지거나 넘는 순간을 카운팅하여 구한다.
-         * complet = [5 10 1 1 20 1]
-         * complet에서 pollfirst() 한 값과 이전 값들이 낮은지 비교하면서 낮으면 count하여 count 된값을 List에 추가한다.
-         * complet가 비어질때까지 반복한다.
-         * return [1, 3, 2]
+         * progresses [93, 30, 55]	speeds[1, 30, 5]	return[2, 1]
          * 
-         * deploymentDay poll한값이랑 peek 값 비교해서 poll한값이 같거나 크면 peek값을 poll하고 둘다 queue에 add하고 size 체크하고 해당값 List에 add
-         *   
-         * 5 10 1 1 20 1 -> 
+         * 작업별 배포 가능일 수 계산. - [7 3 9]
+         * 
+         * 우선순위작업 배포 가능일수 와 후순위 작업 배포가능일수를 비교한다.
+         * 우선작업일수 >= 후순위작업일수 면 count++
+         * 후순위작업일수가더크다면 count = 1
          * 
          */
-        //[배포 완료기간 구하기]
-        Queue<Integer> deploymentDay = calculateDeploymentDays(progresses, speeds);
-        Queue<Integer> queue = new ArrayDeque<>();
-       // printQueue(deploymentDay); //739
-        LinkedList<Integer> answerList = new LinkedList<>();
+
+         //배포 가능일수 계산
+         int[] developmentDays = calculateDevelopMentDays(progresses,speeds);
+
+        Queue<Integer> answer = new ArrayDeque<>();
+        //우선순위, 후순위 배포일수 비교
+        int n = progresses.length;
+        int count = 0;
+        int priority = developmentDays[0]; //93
+        for(int i =0; i<n; i++){
+            if(priority >= developmentDays[i]){ //우선작업일수가 후순위 작업일수보다 크거나 같다면
+                count ++;
+            }else{
+                answer.add(count);
+                count = 1;
+                priority = developmentDays[i];
+            }
+        }
+        answer.add(count); //마지막작업일수
         
-        //10 1 1  20 1 
-        while(!deploymentDay.isEmpty()){
-            int first = deploymentDay.poll(); //10
-            queue.add(first); //10
-            Integer peek = deploymentDay.peek(); //1
-            while(peek!=null && first >= peek){
-                int poll = deploymentDay.poll();//1
-                queue.add(poll);
-                peek = deploymentDay.peek();
-            }
-            answerList.add(queue.size()); //1
-            queue.clear();
-        }
-
-
-
-         int[] answer = answerList.stream().mapToInt(Integer::intValue).toArray();
-        return answer;
+        return answer.stream().mapToInt(Integer::intValue).toArray();
     }
-        public static Queue<Integer> calculateDeploymentDays(int[] progresses, int[] speeds){
-        Queue<Integer> deploymentDays = new ArrayDeque<>(); 
-        for(int i =0; i<progresses.length; i++){
-            int deploymentDay = 0;
-            int progress = progresses[i];
-            while(progress < 100){
-                progress += speeds[i];
-                deploymentDay++;
-            }
-            deploymentDays.add(deploymentDay);           
+
+    public static int[] calculateDevelopMentDays(int[] progresses, int[] speeds){
+        int[] result = new int[progresses.length];
+        int n = progresses.length;
+        for(int i=0; i<n; i++){
+            result[i] = (int) Math.ceil((100.0-progresses[i])/speeds[i]); //(100 - 30) / 30 = 2.3 (올림) -> 3
         }
-        return deploymentDays;
+        return result;
     }
 }
