@@ -28,10 +28,9 @@ class Solution{
 
         //동점자 있을시 오름차순 리턴
         ArrayList<Integer> list = new ArrayList<>();
-        int index = 0;
-        for (int score : scores){
-            if(maxScore == score){
-                list.add(index++ + 1);
+        for(int i=0; i<scores.length; i++){
+            if(maxScore == scores[i]){
+                list.add(i + 1);
             }
         }
 
