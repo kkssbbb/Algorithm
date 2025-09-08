@@ -18,7 +18,8 @@ class Solution{
         }
 
         int[] answer = new int[set.size()];
-        for(int i=0; i < set.size(); i++){
+        int size = set.size();
+        for(int i=0; i < size; i++){
             answer[i] = set.pollFirst();
         }
 
