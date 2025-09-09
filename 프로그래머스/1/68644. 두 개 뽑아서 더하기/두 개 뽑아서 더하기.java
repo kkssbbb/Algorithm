@@ -1,5 +1,4 @@
 import java.util.Queue;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -12,28 +11,24 @@ class Solution {
         //x 와 나머지 요소들과 더하고 더한값을 ArrayList에 담는다.
         // 큐가 비어질떄까지 반복
         //ArrayList 중복제거, 오름차정렬, int[] 변환 후 리턴 한다.
-
-        ArrayList<Integer> arrList = new ArrayList<>();
         
         Queue<Integer> que = Arrays.stream(numbers)
-                                    .boxed()
-                                    .collect(Collectors.toCollection(LinkedList::new));
+            .boxed()
+            .collect(Collectors.toCollection(LinkedList::new));
+        
+        LinkedList<Integer> result = new LinkedList<>();
         
         while(!que.isEmpty()){
-            int x = (int) que.poll();
-                for(Integer y : que){
-                    int sum = x + (int) y;
-                    arrList.add((Integer) sum);
-                }                
+            Integer x = que.poll();
+            for(Integer y : que){
+                Integer sum = x + y;
+                result.add(sum);
+            }
         }
         
-        Collections.sort(arrList);
+        Collections.sort(result);
         
-        return arrList.stream().distinct().mapToInt(Integer::intValue).toArray();
-        
-        
+        return result.stream().distinct().mapToInt(Integer::intValue).toArray();
     }
         
 }
-//[5,0,2,7]
-// 중복 제거, 오름차 정렬
