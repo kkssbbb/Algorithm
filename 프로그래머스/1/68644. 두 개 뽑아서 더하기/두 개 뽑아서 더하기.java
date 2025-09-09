@@ -1,23 +1,39 @@
-import java.util.TreeSet;
-
+import java.util.Queue;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.Collections;
 class Solution {
- public int[] solution(int[] numbers) {
-        
-        //numbers의 서로다른 인덱스 합 , 오름차순, 중복제거
-        //[2,1,3,4,1] ,[5,0,2,7]
-        TreeSet<Integer> set = new TreeSet<>();
-        
-        for(int i=0; i<numbers.length; i++){
-            for(int k=i+1; k<numbers.length; k++){
-                int sum = numbers[i] + numbers[k];
-                set.add(sum);
-            }
-        }        
-        
-        //일반배열 변환
-        int[] answer = set.stream().mapToInt(Integer::intValue).toArray();
+    public int[] solution(int[] numbers) {
+    
+        //numbers 요소를 큐에 초기화한다.
+        //큐 맨 앞 요소를 꺼낸다 -> x
+        //x 와 나머지 요소들과 더하고 더한값을 ArrayList에 담는다.
+        // 큐가 비어질떄까지 반복
+        //ArrayList 중복제거, 오름차정렬, int[] 변환 후 리턴 한다.
 
-
-        return answer;
- }
+        ArrayList<Integer> arrList = new ArrayList<>();
+        
+        Queue<Integer> que = Arrays.stream(numbers)
+                                    .boxed()
+                                    .collect(Collectors.toCollection(LinkedList::new));
+        
+        while(!que.isEmpty()){
+            int x = (int) que.poll();
+                for(Integer y : que){
+                    int sum = x + (int) y;
+                    arrList.add((Integer) sum);
+                }                
+        }
+        
+        Collections.sort(arrList);
+        
+        return arrList.stream().distinct().mapToInt(Integer::intValue).toArray();
+        
+        
+    }
+        
 }
+//[5,0,2,7]
+// 중복 제거, 오름차 정렬
